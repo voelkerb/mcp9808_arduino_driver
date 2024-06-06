@@ -138,7 +138,7 @@ int8_t MCPClass::wake(void) {
 
     /* Check if shutdown bit is set */
     if (reg & (1 << 8)) {
-        regWrite16(POINTER_CONFIG, reg | (0 << 8)); // Clear bit 8 (SHDN)
+        regWrite16(POINTER_CONFIG, reg & ~(0 << 8)); // Clear bit 8 (SHDN)
     } else {
 #ifdef DEBUG
         SerialDebug.println("Error: shutdown (SHDN) bit not set");
